@@ -1,0 +1,244 @@
+<div class="row justify-content-center">
+    <div class="col-lg-12 my-4">
+        <div class="mt-2 mb-4 text-center" *ngIf="isAccount">
+            connected wallet = {{account}}
+        </div>
+        <div class="text-center mt-3">
+            <div class="row">
+                <div class="col-lg-3">
+                    <h2>Approve</h2>
+                    <div>
+                        Spender : <input type="text" class="mt-2" placeholder="address" [(ngModel)]="approveSpender">
+                        Amount : <input type="text" class="mt-2" placeholder="unit256" [(ngModel)]="approveAmounts">
+                    </div>                    
+                    <button type="button" class="btn btn-warning mt-2" (click)="approveData()">
+                        Transact
+                    </button>
+                    <div class="mt-2mb-4" *ngIf= "isTransactionHash">
+                        Transaction Hash = {{transactionHashApprove}}
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h2>Burn</h2>
+                    <div>
+                        Amount : <input type="text" class="mt-2" placeholder="unit256" [(ngModel)]="burnAmount">
+                    </div>                    
+                    <button type="button" class="btn btn-warning mt-2" (click)="burn()">
+                        Transact
+                    </button>
+                    <div class="mt-2 mb-4" *ngIf="isBurn">
+                        Transaction Hash = {{transactionHashBurn}}
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h2>BurnFrom</h2>
+                    <div>
+                        Account : <input type="text" class="mt-2" placeholder="address" [(ngModel)]="burnFromAddress">
+                        Amount : <input type="text" class="mt-2" placeholder="unit256" [(ngModel)]="burnFromAmount">
+                    </div>                    
+                    <button type="button" class="btn btn-warning mt-2" (click)="burnFrom()">
+                        Transact
+                    </button>  
+                    <div class="mt-2 mb-4" *ngIf = "isBurnFrom">
+                        Transaction Hash = {{trasactionHashBurnFrom}}
+                    </div>                 
+                </div>
+                <div class="col-lg-2">
+                    <h2>DecreaseAllowance</h2>
+                    <div>
+                        Spender : <input type="text" class="mt-2" placeholder="address" [(ngModel)]="spenderDecrease">
+                        subtractedValue : <input type="text" class="mt-2" placeholder="unit256" [(ngModel)]="amountSub">
+                    </div>                    
+                    <button type="button" class="btn btn-warning mt-2" (click)="decreaseAllowanceData()">
+                        Transact
+                    </button>  
+                    <div class="mt-2 mb-4" *ngIf = "isDecrease">
+                        Transaction Hash = {{transactionHashDecrease}}
+                    </div>                 
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-3">
+                    <h2>IncreaseAllowance</h2>
+                    <div>
+                        Spender : <input type="text" class="mt-2" placeholder="address" [(ngModel)]="increaseSender">
+                        addedValue : <input type="text" class="mt-2" placeholder="unit256" [(ngModel)]="increaseValue">
+                    </div>                    
+                    <button type="button" class="btn btn-warning mt-2" (click)="increaseAllowanceData()">
+                        Transact
+                    </button> 
+                    <div class="mt-2 mb-4" *ngIf="isIncrease">
+                        Transaction Hash = {{transactionHashIncrease}}
+                    </div>                  
+                </div>
+                <div class="col-lg-3">
+                    <h2>Mint</h2>
+                    <div>
+                        To : <input type="text" class="mt-2" placeholder="address" [(ngModel)]="mintAddress">
+                        Amount : <input type="text" class="mt-2" placeholder="unit256" [(ngModel)]="mintAmount">
+                    </div>                    
+                    <button type="button" class="btn btn-warning mt-2" (click)="mint()">
+                        Transact
+                    </button>    
+                    <div class="mt-2 mb-4" *ngIf = "isMint">
+                        Transaction Hash = {{transactionHashMint}}
+                    </div>               
+                </div>
+                <div class="col-lg-3">
+                    <h2>Pause</h2>                    
+                    <button type="button" class="btn btn-warning mt-2" (click)="getPause()">
+                        Pause
+                    </button>      
+                    <div class="mt-2 mb-4" *ngIf="isPause">
+                        Transaction Hash = {{transactionHashPause}}
+                        Status = {{isPauseStatus}}
+                    </div>             
+                </div>
+                <div class="col-lg-3">
+                    <h2>RenounceOwnership</h2>                    
+                    <button type="button" class="btn btn-warning mt-2" (click)="getRenounceOwnership()">
+                        RenounceOwnership
+                    </button> 
+                    <div class="mt-2 mb-4" *ngIf="isRenounceOwnerShip">
+                        Transaction Hash = {{transactionHashRenounceOwnerShip}}
+                    </div>                  
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-3">
+                    <h2>Transfer</h2>
+                    <div>
+                        To : <input type="text" class="mt-2" placeholder="address" [(ngModel)]="toTransfer">
+                        Amount : <input type="text" class="mt-2" placeholder="unit256" [(ngModel)]="amountTransfer">
+                    </div>                    
+                    <button type="button" class="btn btn-warning mt-2" (click)="transferData()">
+                        Transact
+                    </button>   
+                    <div class="mt-2 mb-4" *ngIf = "isTransfer">
+                        Transaction Hash = {{transactionHashTransfer}}
+                    </div>                
+                </div>
+                <div class="col-lg-3">
+                    <h2>TransferFrom</h2>
+                    <div>
+                        From : <input type="text" class="mt-2" placeholder="address" [(ngModel)]="fromTransferFrom">
+                        To : <input type="text" class="mt-2" placeholder="address" [(ngModel)]="toTransferFrom">
+                        Amount : <input type="text" class="mt-2" placeholder="unit256" [(ngModel)]="amountTransferFrom">
+                    </div>                    
+                    <button type="button" class="btn btn-warning mt-2" (click)="transferFromData()">
+                        Transact
+                    </button>   
+                    <div class="mt-2 mb-4" *ngIf="isFrom">
+                        Transaction Hash = {{transactionHashFrom}}
+                    </div>                
+                </div>
+                <div class="col-lg-3">
+                    <h2>TransferOwnership</h2>
+                    <div>
+                        newOwner : <input type="text" class="mt-2" placeholder="address" [(ngModel)]="newOwnerAddress">
+                    </div>                    
+                    <button type="button" class="btn btn-warning mt-2" (click)="ownerShipTransfer()">
+                        Transact
+                    </button>  
+                    <div class="mt-2 mb-4" *ngIf = "isTransferOwner">
+                        Transaction Hash  = {{transactionHashTransferOwner}}
+                    </div>                 
+                </div>
+                <div class="col-lg-3">
+                    <h2>Unpause</h2>                    
+                    <button type="button" class="btn btn-warning mt-2" (click)="unPause()">
+                        Unpause
+                    </button>   
+                    <div class="mt-2 mb-4" *ngIf ='isUnPause'>
+                        Transaction Hash =  {{transactionHashUnPause}}
+                        Status = {{unPauseStatus}}
+                    </div>                
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-lg-3">
+                    <h2>Allowance</h2>
+                    <div>
+                        Owner : <input type="text" class="mt-2" placeholder="address" [(ngModel)]="allowanceOwner">
+                        Spender : <input type="text" class="mt-2" placeholder="address" [(ngModel)]="allowanceSpender">
+                    </div>                    
+                    <button type="button" class="btn btn-primary mt-2" (click)="allow()">
+                        Call
+                    </button>
+                    <div class="mt-2 mb-4" *ngIf="isAllowance">
+                        Allowed Amount = {{allowedAmount}}
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h2>BalanceOf</h2>
+                    <div>
+                        Account : <input type="text" class="mt-2" placeholder="address" [(ngModel)]="addressBalanceOf">
+                    </div>                    
+                    <button type="button" class="btn btn-primary mt-2" (click)="getBalanceOf()">
+                        Call
+                    </button> 
+                    <div class="mt-2 mb-4" *ngIf="isBalance">
+                        Balance = {{balance}}
+                    </div> 
+                </div>
+                <div class="col-lg-3">
+                    <h2>Decimals</h2>                  
+                    <button type="button" class="btn btn-primary mt-2" (click)="getDecimals()">
+                        Decimals
+                    </button> 
+                    <div class="mt-2 mb-4" *ngIf="isDecimal">
+                        Total Number of Decimal = {{decimal}} 
+                    </div>                  
+                </div>
+                <div class="col-lg-3">
+                    <h2>Name</h2>
+                    <button type="button" class="btn btn-primary mt-2" (click)="getName()">
+                        Name
+                    </button> 
+                    <div class="mt-2 mb-4" *ngIf="isName">
+                        Token Name = {{name}}
+                    </div>                  
+                </div>
+            </div>
+            <div class="row mt-4 mb-4">
+                <div class="col-lg-3">
+                    <h2>Owner</h2>
+                    <button type="button" class="btn btn-primary mt-2" (click)="getOwner()">
+                        Owner
+                    </button>
+                    <div class="mt-2 mb-4" *ngIf = "isOwner">
+                        Owner Address = {{ownerAddress}}
+                    </div> 
+                </div>
+                <div class="col-lg-3">
+                    <h2>Paused</h2>
+                    <button type="button" class="btn btn-primary mt-2" (click)="getPausedStatus()">
+                        Paused
+                    </button>  
+                    <div class="mt-2 mb-4" *ngIf="isPausedStatus">
+                        Paused Status = {{pausedStatus}}
+                    </div>                 
+                </div>
+                <div class="col-lg-3">
+                    <h2>Symbol</h2>
+                    <button type="button" class="btn btn-primary mt-2" (click)="getSymbol()">
+                        Symbol
+                    </button>
+                    <div class="mt-2 mb-4" *ngIf="isSymbol">
+                        Symbol Name = {{symbol}}
+                    </div>                 
+                </div>
+                <div class="col-lg-3">
+                    <h2>TotalSupply</h2>
+                    <button type="button" class="btn btn-primary mt-2" (click)="getTotalSupplay()">
+                        TotalSupply
+                    </button>  
+                    <div class="mt-4 mb-4" *ngIf="isTotalSupply">
+                        TotalSupply = {{totalSupply}}
+                    </div>                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

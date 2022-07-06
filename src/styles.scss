@@ -1,0 +1,25 @@
+ul.techList {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.techList li {
+    background: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px 13px;
+    margin-bottom: 10px;
+}
+
+ul.techList.danger li {
+    color: red;
+    background: rgba(255,0,0,0.08);
+    border-color: red;
+}
+
+ul.techList.success li {
+    color: #3dd843;
+    background: rgba(61,216,67,0.08);
+    border-color: #3dd843;
+}
